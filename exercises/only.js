@@ -1,12 +1,8 @@
-function only(object, propertyNames){
+function onlyVersion1(object, propertyNames){
     
-    //Object.entries(object).forEach()
-
-    const entries = Object.entries(object);
-    console.log('entries', entries);
     const result  = {};
 
-    entries.forEach(([propertyName, propertyValue]) => {
+    Object.entries(object).forEach(([propertyName, propertyValue]) => {
 
         if(propertyNames.includes(propertyName) ){
             result[propertyName] = propertyValue;
@@ -15,6 +11,34 @@ function only(object, propertyNames){
 
         return result;
 }
+
+function onlyVersion2(object, propertyNames){
+    
+    const result2  = {};
+    //console.log('propertyNames: ', propertyNames);
+
+    propertyNames.forEach(propertyName => {
+        if(Object.keys(object).includes(propertyName)){
+            result2[propertyName] = object[propertyName];
+        }
+        
+    });
+    return result2;
+}
+
+function onlyVersion3(object, propertyNames){
+    
+    const result  = {};
+
+    propertyNames.forEach(propertyName => {
+        if(object.hasOwnProperty(propertyName)){
+            result[propertyName] = object[propertyName];
+        }
+    });
+    return result;
+}
+
+
 const numbers = {
     a: 1,
     b: 2,
@@ -48,6 +72,19 @@ console.log('result', result);
 
 console.log(
     'FINAL: ',
-    'only(numbers, ["b", "c"])', 
-    only(numbers, ["b", "c"])
+    'onlyVersion1(numbers, ["b", "c"])', 
+    onlyVersion1(numbers, ["b", "c"])
 );
+
+console.log(
+    'FINAL2: ',
+    'onlyVersion2(numbers, ["b", "c", "e"])', 
+    onlyVersion2(numbers, ["b", "c", 'e'])
+);
+
+console.log(
+    'FINAL3: ',
+    'onlyVersion3(numbers, ["b", "c", "e"])', 
+    onlyVersion3(numbers, ["b", "c", 'e'])
+);
+

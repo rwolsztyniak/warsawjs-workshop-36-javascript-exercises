@@ -5,21 +5,13 @@ const print = (text) => {
     console.log(`${text} (after ${now - programStartTime} ms)`);
 };
 
-print('A'); 
-
 const runBlockingTask = (miliseconds) => {
     const startTime = new Date().getTime();
-    while(new Date().getTime() - startTime < miliseconds){
-
-    };
-
+    while(new Date().getTime() - startTime < miliseconds){};
 };
-/*
-const measureExecutontime = () => {
-    const startTime = new Date().getTime();
-    const endTime = new Date().getTime();
-    console.log(`long blocking taks took ${endTime - startTime} miliseconds`);
-}*/
+
+
+print('A'); 
 
 const printC = () => {
     print('C');
